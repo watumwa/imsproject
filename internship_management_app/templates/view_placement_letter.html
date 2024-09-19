@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>Student Placement Letters</h1>
+
+  {% for students_with_placement_letters in students_with_placement_letters %}
+    <h3>{{ students_with_placement_letters.name }}</h3>
+    <p>Course: {{ students_with_placement_letters.get_course_display }}</p>
+    <p>Email: {{ students_with_placement_letters.email }}</p>
+    <p>Organization: {{ student.organization }}</p>
+    <p>Placement Letter: <a href="{{ student.placement_letter.url }}">Download</a></p>
+    <hr>
+  {% empty %}
+
+    <p>No placement letters available.</p>
+    
+  {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>List of Assigned Students</h2>
+
+<div class="search-container">
+  <input type="text" id="search-input" placeholder="Search by supervisor">
+  <button type="button" id="search-button">Search</button>
+</div>
+
+<table class="assigned-students-table">
+  <thead>
+    <tr>
+      <th>Student Name</th>
+      <th>University Supervisor</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for assigned_student in assigned_students %}
+      <tr>
+        <td>{{ assigned_student.student.name }}</td>
+        <td>{{ assigned_student.university_supervisor.username }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#search-button').click(function() {
+      var searchValue = $('#search-input').val().toLowerCase();
+      
+      $('table.assigned-students-table tbody tr').each(function() {
+        var supervisorName = $(this).find('td:nth-child(2)').text().toLowerCase();
+        
+        if (supervisorName.includes(searchValue)) {
+          $(this).show();
+        } else {
+          $(this).hide();
+        }
+      });
+    });
+  });
+</script>
+
+  <style>
+                .assigned-students-table {
+                  width: 100%;
+                  border-collapse: collapse;
+                }
+              
+                .assigned-students-table th,
+                .assigned-students-table td {
+                  padding: 8px;
+                  border: 1px solid #ccc;
+                }
+              
+                .assigned-students-table th {
+                  background-color: #f2f2f2;
+                  font-weight: bold;
+                }
+              </style>
+              
+{% endblock %}

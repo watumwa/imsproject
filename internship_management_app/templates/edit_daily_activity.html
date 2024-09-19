@@ -1,0 +1,24 @@
+
+<body>
+    {% extends './base.html' %}
+    {% block content %}
+    {% load crispy_forms_tags %}
+    <h2>Edit:: {{daily_activity.department_of_attachment }}</h2>
+
+    <div class="container">
+       
+        {% if message %}
+        {{message}}
+     {% endif %}
+  
+
+        <form method="POST">
+             {% csrf_token %}
+             {{form|crispy}} 
+
+            <input type ="submit" class="btn btn-success">
+       
+        </form>
+        {% endblock content %}
+</body>
+</html>

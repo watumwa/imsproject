@@ -1,0 +1,57 @@
+{% extends './base.html' %}
+   {% block content %}
+   {% load crispy_forms_tags %}
+   
+
+
+   <style>
+      /* Style for the comment form */
+      form {
+          width: 400px;
+          margin: 20px auto;
+          padding: 20px;
+          background-color: #f5f5f5;
+          border-radius: 5px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+  
+      /* Style for the form label */
+      label {
+          display: block;
+          margin-bottom: 10px;
+      }
+  
+      /* Style for the comment textarea */
+      textarea {
+          width: 100%;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          resize: vertical;
+      }
+  
+      /* Style for the submit button */
+      button[type="submit"] {
+          padding: 10px 20px;
+          background-color: #4CAF50;
+          color: #fff;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+      }
+  
+      /* Style for the submit button when hovered */
+      button[type="submit"]:hover {
+          background-color: #45a049;
+      }
+  </style>
+  
+  <form method="post">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <label for="comment">Add Comment:</label>
+      <textarea name="comment" id="comment" rows="4" cols="50"></textarea>
+     <center> <button type="submit">Submit</button></center>
+  </form>
+  
+{% endblock content %}  

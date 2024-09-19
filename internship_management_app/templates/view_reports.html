@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Internship Reports</h1>
+
+  <style>
+    table.report-table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    table.report-table th, table.report-table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    table.report-table th {
+      background-color: #f2f2f2;
+    }
+  </style>
+  
+  <table class="report-table">
+    <thead>
+      <tr>
+        <th>Student</th>
+        <th>Report</th>
+        <th>Date Uploaded</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for report in reports %}
+      <tr>
+        <td>{{ report.student }}</td>
+        <td><a href="{{ report.report.url }}">{{ report.report.name }}</a></td>
+        <td>{{ report.date_uploaded }}</td>
+        <td>
+          <a href="{{ report.report.url }}" class="btn btn-primary">Download</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  
+  
+{% endblock %}

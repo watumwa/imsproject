@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8" />
+        <title>INTERNSHIP MANAGEMENT SYSTEM </title>
+        {% load static %}
+        {%load crispy_forms_tags %}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+        <meta content="Coderthemes" name="author" />
+        <!-- App favicon -->
+        <link rel ="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="shortcut icon" href="{% static 'assets/images/favicon.ico' %}">
+
+        <!-- App css -->
+        <link href="{% static 'assets/css/icons.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'assets/css/app.min.css' %}" rel="stylesheet" type="text/css" id="light-style" />
+        <link href="{% static 'assets/css/app-dark.min.css' %}" rel="stylesheet" type="text/css" id="dark-style" />
+
+    </head>
+
+    <body class="authentication-bg pb-0" data-layout-config='{"darkMode":false}' style="margin: 10px;">
+
+      <div class="auth-fluid">
+       
+        <!-- Auth fluid left content -->
+        <div class="auth-fluid-form-box">
+          <div class="align-items-center d-flex h-100">
+            
+            <div class="card-body">
+    
+              
+              <center>
+                <a href="#" class="logo-dark" style="text-decoration: none;">
+                  <span><img src="" alt="" width="50"><img src="{% static 'dist/img/log1.jfif' %}" width="100"></span>
+                </a>
+              </center>
+              <div class="auth-brand text-center text-lg-start">
+                
+                <center>
+                    <p><h4 style="color: green;">ISLAMIC UNIVERSITY IN UGANDA</h4>
+                    <h6 style="color: red;">INTERNSHIP MANAGEMENT SYSTEM</h6></p>
+                </center>
+            </div>
+            
+    
+              <!-- Title -->
+             
+              <hr>
+              <p class="text-muted mb-4" style="text-align: center; font-weight: bold; font-size: 20px; color: black;">LOGIN</p>
+
+    
+              <!-- Form -->
+              <!-- <style>
+                /* Form Styling */
+                form {
+                  max-width: 400px;
+                  margin: 0 auto;
+                  padding: 20px;
+                  border: 1px solid #ccc;
+                  border-radius: 5px;
+                  background-color: #f9f9f9;
+                }
+    
+                label {
+                  display: block;
+                  margin-bottom: 5px;
+                  font-weight: bold;
+                }
+    
+                input[type="text"],
+                input[type="password"] {
+                  display: block;
+                  width: 100%;
+                  padding: 8px;
+                  border: 1px solid #ccc;
+                  border-radius: 4px;
+                  margin-bottom: 10px;
+                }
+    
+                button[type="submit"],
+                a[type="submit"] {
+                  display: block;
+                  width: 100%;
+                  padding: 8px;
+                  background-color: #007bff;
+                  color: white;
+                  border: none;
+                  border-radius: 4px;
+                  cursor: pointer;
+                  margin-bottom: 10px;
+                  text-decoration: none;
+                  text-align: center;
+                }
+    
+                .social {
+                  margin-top: 20px;
+                  text-align: center;
+                }
+    
+                .social a {
+                  display: inline-block;
+                  margin-right: 10px;
+                }
+              </style>
+     -->
+              <form method="post">
+                {% csrf_token %}
+    
+                {{ form.as_p }}
+    
+                <br>
+                <p>
+                  <div style="text-align: left;">
+                    <a href="{% url 'password_reset' %}" style="color: darkgreen;"><i class="mdi mdi-login"></i>Forgot Password?</a>
+                    <p><a href="" style="color: darkgreen;"><i class="mdi mdi-login"></i>[Help:+25670653788]</a></p>
+                  </div>
+                  
+                  <div class="d-grid mb-0 text-center">
+                    <button class="btn btn-success" type="submit"><i class="mdi mdi-login"></i>SIGN IN</button>
+                   
+                  </div>
+                </p>
+                
+                <!-- Social -->
+                <div class="social">
+                  <!-- Add your social icons or links here -->
+                </div>
+              </form>
+              <!-- End form -->
+    
+            </div> <!-- End .card-body -->
+          </div> <!-- End .align-items-center.d-flex.h-100 -->
+        </div>
+        <!-- End auth-fluid-form-box -->
+    
+        <!-- Auth fluid right content -->
+        <div class="alertt alert-info" role="alert">
+          <span><img src="" alt="" width="50"><img src="{% static 'dist/img/DSC_0520.jpg' %}" width="900" height="350"></span>
+          <center>
+            <h2 style="color: red;">ANNOUNCEMENTS</h2>
+            <ul>
+              {% for announcement in announcement %}
+              <li>
+                <div class="announce">
+                  <h3 style="color:black; font-weight: bold;">{{ announcement.title }}</h3>
+                  <p style="color: green; font-weight: bold;">{{ announcement.content }}</p>
+                  <p style="color: green;font-weight: bold;">Created at: {{ announcement.created_at }}</p>
+                </div>
+              </li>
+              {% endfor %}
+            </ul>
+            
+            </ul>
+          </center>
+          <!-- <div class="myDiv">
+            <h2>About:</h2>
+            <p>
+              Welcome to INTERNSHIP MANAGEMENT SYSTEM, a comprehensive platform designed to streamline and enhance your internship management experience. Our main objective is to provide you with a centralized system to efficiently manage all internship activities and seamlessly track vital information over time. With our user-friendly interface and robust features, we aim to simplify the entire internship process, from application to evaluation, creating a seamless and organized experience for both interns and organizations.
+            </p>
+          </div> -->
+         <center><div style="color:black; font-weight: bold;"class="footer">
+            &copy; @ 2023 | Developed by BIT3
+          </div></center> 
+        </div>
+        <!-- End Auth fluid right content -->
+      </div>
+      <!-- End auth-fluid -->
+    
+      <!-- Bundle -->
+      <script src="{% static 'assets/js/vendor.min.js' %}"></script>
+      <script src="{% static 'assets/js/app.min.js' %}"></script>
+    
+      <!-- <style>
+        .myDiv {
+          border: 50px outset;
+          background-color: white;
+          text-align: bottom;
+          width: 800px;
+          height: 50px;
+        }
+    
+        .alertt {
+          border: 50px outset;
+          background-color: white;
+          text-align: bottom;
+          width: 1020px;
+          height: 800px;
+        }
+    
+       
+      </style> -->
+    
+    </body>
+    
+
+</html>
+

@@ -1,0 +1,136 @@
+{% extends './base.html' %}
+   {% block content %}
+   {% load crispy_forms_tags %}
+   
+   
+    {% load crispy_forms_tags %}
+   
+</head>
+<body>
+    <form>
+        {% csrf_token %}
+        {{ form|crispy }}
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+    </form>
+    <center>
+    <table class="table table-hover">
+        <thread>
+            <tr>
+                <th scope ="col">Academic_year</th>
+                <th scope="col">Start_date</th>
+                <th scope ="col">End_date</th>
+                <th scope ="col">Status</th> 
+               
+            </tr>
+        </thread>
+        <tbody>
+                {% for internship in internship %}
+                <tr>
+                 
+                 <td>{{internship.academic_year}}</td>
+                 <td>{{internship.start_date}}</td>
+                 <td>{{internship.end_date}}</td>
+                 <td>{{internship.status}}</td>
+               
+                 <td>
+                     <a href="{%url 'edit_internship_period_page' internship.id %}"> Edit</a>|
+                     
+                     <a href="{% url 'delete_internship_period_page' internship.id %}" onclick="return confirm('Are you sure you want to delete this student?')">Delete</a>
+                 </td>
+             </tr>
+            {% endfor %}
+             </tbody>
+            </center>
+
+   
+</body>
+{% endblock content %}
+</html>
+
+
+
+<style>
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .table th,
+  .table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+</style>
+
+<table class="table">
+  <!-- table content -->
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      padding: 20px;
+    }
+  
+    h2 {
+      text-align: center;
+    }
+  
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+  
+    .form-group {
+      margin-bottom: 15px;
+    }
+  
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+  
+    .form-group input[type="text"],
+    .form-group input[type="email"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+  
+    .btn-primary {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  
+    .btn-primary:hover {
+      background-color: #0069d9;
+    }
+  </style>

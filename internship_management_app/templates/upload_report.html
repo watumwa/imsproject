@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Uploaded Internship Reports</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Report</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for report in internship_report %}
+        <tr>
+          <td><a href="{{ report.report.url }}">{{ report.report.name }}</a></td>
+          <td>
+            <a href="" class="delete-link" data-report-id="{{ report.report.id }}">Delete</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <p>No reports uploaded yet.</p>
+
+  {% if message %}
+    <p>{{ message }}</p>
+  {% endif %}
+
+  <div class="form-container">
+    <form method="POST" action="{% url 'upload_report' %}" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Upload</button>
+    </form>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Attach click event handler to all elements with the class "delete-link"
+      $('.delete-link').click(function(event) {
+        event.preventDefault(); // Prevent default link behavior
+
+        // Get the report ID from the data attribute
+        var reportId = $(this).data('report-id');
+
+        // Display a confirmation dialog before proceeding with the deletion
+        if (confirm('Are you sure you want to delete this report?')) {
+          // Send an AJAX request to delete the report
+          $.ajax({
+            type: 'POST',
+            url: '/delete_report/' + reportId + '/',
+            data: {
+              csrfmiddlewaretoken: '{{ csrf_token }}',
+            },
+            success: function() {
+              // If the deletion was successful, remove the corresponding row from the table
+              $('a[data-report-id="' + reportId + '"]').closest('tr').remove();
+            },
+            error: function(xhr, status, error) {
+              // Handle error (if needed)
+              console.log(xhr.responseText);
+            }
+          });
+        }
+      });
+    });
+  </script>
+  <script>
+    $(document).ready(function() {
+      // ... previous code ...
+  
+      $('.delete-link').click(function(event) {
+        event.preventDefault();
+        var reportId = $(this).data('report-id');
+        console.log('Report ID:', reportId);  // Add this line to check the report ID in the console
+  
+        // ... rest of the AJAX request ...
+      });
+    });
+  </script>
+  
+{% endblock %}

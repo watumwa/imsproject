@@ -1,0 +1,70 @@
+{% extends './base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<div class="container">
+  <h1>Student Daily Activity </h1>
+
+  <table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Reg No</th>
+            <th>Student Name</th>
+            <th>Department of Attachment</th>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Lessons and Skills Learnt</th>
+            <th>Challenges</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for daily_activity in daily_activities %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ daily_activity.student.username }}</td>
+                <td>{{ daily_activity.department_of_attachment }}</td>
+                <td>{{ daily_activity.date }}</td>
+                <td>{{ daily_activity.description_of_daily_activity }}</td>
+                <td>{{ daily_activity.lessons_and_skills_learnt }}</td>
+                <td>{{ daily_activity.challenges }}</td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="7">No daily activity available.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</div>
+
+<style>
+  /* Add your custom CSS styles here */
+  .container {
+    margin-top: 20px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  tr:hover {
+    background-color: #ddd;
+  }
+</style>
+
+{% endblock content %}

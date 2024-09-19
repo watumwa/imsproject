@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Assign Students</h2>
+ <style>
+    /* Form Styling */
+    form {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    select,
+    button {
+        display: block;
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    button {
+        margin-top: 10px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #218838;
+    }
+</style>
+
+<form method="POST">
+    {% csrf_token %}
+    
+    <label for="student">Student:</label>
+    <select id="student" name="student">
+      {% for student in students %}
+        <option value="{{ student.id }}">{{ student.name }}</option>
+      {% endfor %}
+    </select>
+    
+    <label for="supervisor">Supervisor:</label>
+    <select id="supervisor" name="supervisor">
+      {% for supervisor in supervisors %}
+        <option value="{{ supervisor.id }}">{{ supervisor.username }}</option>
+      {% endfor %}
+    </select>
+    
+    <button type="submit">Assign</button>
+</form>
+
+{% endblock %}

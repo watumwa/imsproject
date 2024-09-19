@@ -1,0 +1,71 @@
+{% extends './base.html' %}
+   {% block content %}
+   {% load crispy_forms_tags %}
+
+   <!DOCTYPE html>
+<html>
+<head>
+    <title>Internship Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* Additional CSS styles based on the title */
+        /* Customize the styles as per your preference */
+
+        /* Header style */
+        h2 {
+            font-size: 32px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* Background color for body */
+        body {
+            background-color: #e9e9e9;
+        }
+
+        /* Center the content */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>INTERNSHIP MANAGEMENT SYSTEM</h2>
+        <h2 style="color: green;">Welcome, {{ user.username }}!</h2>
+
+        <!-- <p>Welcome to the Internship Management System, your one-stop platform for managing internships. Whether you are a student looking for internship opportunities or an organization seeking interns, our system provides a seamless experience to connect and streamline the internship process.</p>
+
+        <p>Our platform offers a comprehensive set of features, including internship listings, application management, progress tracking, supervisor visits, and feedback. We strive to simplify the internship management process and ensure a fruitful experience for both students and organizations.</p>
+
+        <p>Explore our system and take advantage of the powerful tools and resources available to facilitate successful internships. Join our growing community today and unlock new opportunities for professional growth and development.</p>
+
+        <p>If you have any questions or need assistance, please don't hesitate to reach out to our support team. We are here to help you make the most of your internship management journey.</p> -->
+
+    </div>
+
+    <script>
+        // JavaScript functionality (if needed)
+    </script>
+</body>
+</html>
+
+{% endblock content %}
+</html>

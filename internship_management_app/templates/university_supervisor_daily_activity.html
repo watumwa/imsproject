@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Daily Activities for University Supervisor</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Department of Attachment</th>
+                <th>Date</th>
+                <th>Description of Daily Activity</th>
+                <th>Lessons and Skills Learnt</th>
+                <th>Challenges</th>
+                <th>Student</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for daily_activity in daily_activities %}
+                <tr>
+                    <td>{{ daily_activity.department_of_attachment }}</td>
+                    <td>{{ daily_activity.date }}</td>
+                    <td>{{ daily_activity.description_of_daily_activity }}</td>
+                    <td>{{ daily_activity.lessons_and_skills_learnt }}</td>
+                    <td>{{ daily_activity.challenges }}</td>
+                    <td>{{ daily_activity.student }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

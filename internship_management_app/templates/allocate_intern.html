@@ -1,0 +1,65 @@
+{% extends './base.html' %}
+   {% block content %}
+   {% load crispy_forms_tags %}
+    {%load crispy_forms_tags %}
+<head>
+    <title>Allocate Intern</title>
+   
+<body>
+    <h3>Allocate Intern</h3>
+     <div class="alert alert-success" >
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit">Submit</button>
+    </form>
+    <table class="table table-hover">
+        <thread>
+            <tr>
+                <th scope ="col">intern</th>
+                <th scope="col">allocation_date</th>
+                <th scope ="col">supervisor</th>
+             
+               
+            </tr>
+        </thread>
+        <tbody>
+                {% for allocation in allocation %}
+                <tr>
+                 
+                 <td>{{allocation.intern}}</td>
+                 <td>{{allocation.allocation_date}}</td>
+                 <td>{{allocation.supervisor}}</td>
+                 
+                 <td>
+                     <a href="{% url 'edit_allocation_page' allocation.id %}"> Edit</a>|
+                     
+                     <a href="{% url 'delete_allocation_page' allocation.id %}" onclick="return confirm('Are you sure you want to delete this voter?')">Delete</a>
+                 </td>
+             </tr>
+            {% endfor %}
+             </tbody>
+   
+       
+   
+</body>
+{% endblock content %}
+</div>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

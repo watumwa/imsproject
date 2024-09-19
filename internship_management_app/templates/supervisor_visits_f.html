@@ -1,0 +1,33 @@
+{% extends './base.html' %}
+   {% block content %}
+   {% load crispy_forms_tags %}
+  {% load crispy_forms_tags %}
+<!-- supervisor_visits_f.html -->
+<table style="border-collapse: collapse; width: 100%;">
+  <thead>
+      <tr>
+          <th style="border: 1px solid #ccc; padding: 8px;">Visit Date</th>
+          <th style="border: 1px solid #ccc; padding: 8px;">Intern</th>
+          <th style="border: 1px solid #ccc; padding: 8px;">University Supervisor</th>
+          <th style="border: 1px solid #ccc; padding: 8px;">University Supervisor Comment</th>
+          <th style="border: 1px solid #ccc; padding: 8px;">Work Supervisor Comment</th>
+      </tr>
+  </thead>
+  <tbody>
+      {% for visit in supervisor_visits %}
+      <tr>
+          <td style="border: 1px solid #ccc; padding: 8px;">{{ visit.visit_date }}</td>
+          <td style="border: 1px solid #ccc; padding: 8px;">{{ visit.intern }}</td>
+          <td style="border: 1px solid #ccc; padding: 8px;">{{ visit.university_supervisor }}</td>
+          <td style="border: 1px solid #ccc; padding: 8px;">{{ visit.university_supervisor_comment }}</td>
+          <td style="border: 1px solid #ccc; padding: 8px;">{{ visit.work_supervisor_comment }}</td>
+      </tr>
+      {% endfor %}
+  </tbody>
+</table>
+
+
+
+              
+              {% endblock content %}
+              

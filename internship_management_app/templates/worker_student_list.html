@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    /* Table Styling */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: Arial, sans-serif;
+        color: #333;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    /* Link Styling */
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<table>
+    <thead>
+        <tr>
+            <th>Student</th>
+            <th>Comment</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for worker_assigned_student in worker_assigned_students %}
+        <tr>
+            <td>{{ worker_assigned_student.student }}</td>
+            <!-- <td><a href="{% url 'comment_page' student_id=assigned_student.id %}">Comment</a></td> -->
+            <td><a href="">View</a></td>
+            <!-- <td><a href="{% url 'create_supervisor_visit' %}">Second Visit</a></td> -->
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+
+
+
+
+{% endblock %}
+

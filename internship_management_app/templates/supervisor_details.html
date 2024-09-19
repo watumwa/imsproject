@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Supervisor Details</h1>
+
+  <h2>{{ supervisor.username }}</h2>
+  <p>Email: {{ supervisor.email }}</p>
+  <p>Phone Number: {{ supervisor.phone_number }}</p>
+  <!-- Add other supervisor details as needed -->
+
+  <h2>Send a Message to {{ supervisor.username }}</h2>
+  <form method="post">
+    {% csrf_token %}
+    <div>
+      <label for="subject">Subject:</label>
+      <input type="text" id="subject" name="subject" required>
+    </div>
+    <div>
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" required></textarea>
+    </div>
+    <button type="submit">Send Message</button>
+  </form>
+{% endblock %}

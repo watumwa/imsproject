@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<CENTER><H1>NOTIFICATIONS & NEWS</H1></CENTER>
+
+<CENTER><div class="container-fluid">
+{% for notification in notifications %}
+    <div class="notification">
+        <p style="color: green; font-weight: bolder;">{{ notification.message }}</p>
+        <small style="color: blue;">{{ notification.created_at }}</small>
+    </div>
+{% empty %}
+    <p>No new notifications.</p>
+{% endfor %}
+</div>
+</CENTER>
+{% endblock content %}
